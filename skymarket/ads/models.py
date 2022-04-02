@@ -4,12 +4,18 @@ from users.models import User
 
 
 class Ad(models.Model):
-    image = models.ImageField(upload_to="images/", blank=True, null=True)
+    image = models.ImageField(upload_to="images/", blank=True, null=True, default='images/default.jpg')
     title = models.CharField(max_length=512, blank=False)
     price = models.PositiveIntegerField(blank=False)
     author = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     description = models.TextField(blank=True, null=True, max_length=4096)
+
+    class Meta:
+        ordering = ["id"]
+        # ordering = ["-created_at", "author"]
+    #     verbose_name = 'Объявление'
+    #     verbose_name_plural = 'Объявления'
 
 
 class Comment(models.Model):

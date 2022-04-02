@@ -29,6 +29,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("redoc-tasks/", include("redoc.urls")),
     path("", include("users.urls")),
+    path("", include("ads.urls")),
     # url(r'^auth/', include('djoser.urls')),
 ]
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
